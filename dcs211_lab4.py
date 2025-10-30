@@ -34,7 +34,7 @@ def createByStateBarPlot(df: pd.DataFrame, field: str, filename: str, title: str
 
     Returns: None
     '''
-    group = df.groupby("state")[field].mean().sort_values(ascending=True)
+    group = df.groupby('state')[field].mean().sort_values(ascending=True)
 
     us_state_abbrev = {
         'Alabama': 'AL', 'Alaska': 'AK', 'Arizona': 'AZ', 'Arkansas': 'AR', 'California': 'CA',
@@ -87,8 +87,9 @@ def main() -> None:
     printTableBy(df, 'PCI', 5, 'COUNTIES BY PER CAPITA INCOME')
     printTableBy(df, 'avg_unemployment', 5, 'COUNTIES BY AVERAGE UNEMPLOYMENT')
 
+    createByStateBarPlot(df, 'poverty_rate', 'pov_rate.png', 'States by Poverty Rate', 'Poverty Rate (%)')
     createByStateBarPlot(df, 'avg_unemployment', 'unemployment.png', 'States by Average Unemployment', 'Unemployment Rate (%)')
-    createByStateBarPlot(df, 'per_capita_income', 'income.png', 'States by Per Capita Income', 'Per Capita Income ($)')
+    createByStateBarPlot(df, 'PCI', 'income.png', 'States by Per Capita Income', 'Per Capita Income ($)')
 
 
 if __name__ == '__main__':
